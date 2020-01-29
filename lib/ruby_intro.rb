@@ -8,17 +8,33 @@ def sum arr
 end
 
 def max_2_sum arr
-  # YOUR CODE HERE
+  arr.max(2).reduce(0, :+)
 end
 
 def sum_to_n? arr, n
-  # YOUR CODE HERE
+  if arr.length < 2   #if array contains less than 2 elements this is false
+                      #by default
+    false
+  else
+    matching_found = false;
+    arr.each_with_index{ |elem_i, i|
+      arr.each_with_index{ |elem_j, j| 
+        if elem_i + elem_j == n && i != j 
+          puts "matching_found #{elem_i} + #{elem_j} = #{n}";
+          matching_found = true;
+        end
+        break if matching_found
+      }
+      break if matching_found
+    }
+    matching_found
+  end
 end
 
 # Part 2
 
 def hello(name)
-  # YOUR CODE HERE
+  "Hello, #{name}"
 end
 
 def starts_with_consonant? s
