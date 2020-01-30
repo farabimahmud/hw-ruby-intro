@@ -3,7 +3,6 @@
 # Part 1
 
 def sum arr
-  # YOUR CODE HERE
   arr.reduce(0, :+)
 end
 
@@ -20,7 +19,7 @@ def sum_to_n? arr, n
     arr.each_with_index{ |elem_i, i|
       arr.each_with_index{ |elem_j, j| 
         if elem_i + elem_j == n && i != j 
-          puts "matching_found #{elem_i} + #{elem_j} = #{n}";
+          #puts "matching_found #{elem_i} + #{elem_j} = #{n}";
           matching_found = true;
         end
         break if matching_found
@@ -38,15 +37,51 @@ def hello(name)
 end
 
 def starts_with_consonant? s
-  # YOUR CODE HERE
+  s =~ /^[bcdfghjklmnpqrstvxyzBCDFGHJKLMNPQRSTVWXYZ]/
 end
 
 def binary_multiple_of_4? s
-  # YOUR CODE HERE
+  if !!(s =~ /^[01]*(0{1}|(00))$/)
+    true
+  else 
+    false
+  end
 end
 
 # Part 3
 
 class BookInStock
-# YOUR CODE HERE
+  def initialize(isbn, price)
+    if price <= 0
+      raise ArgumentError
+    end
+    if isbn == ''
+      raise ArgumentError
+    end
+    @isbn = isbn
+    @price = price
+  end
+
+  #setter and getter for isbn
+  def isbn
+    @isbn
+  end
+
+  def isbn=(isbn)
+    @isbn = isbn
+  end
+
+  #setter and getter for price
+  def price
+    @price
+  end
+
+  def price=(price)
+    @price = price
+  end
+
+  def price_as_string()
+    '$%.2f' % [@price]
+  end
+
 end
